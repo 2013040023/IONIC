@@ -1,0 +1,98 @@
+<!--
+  Generated template for the HospitalInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="ihHeader">
+    <ion-title>병원정보</ion-title>
+    <ion-buttons end [hidden]="!AdminAuth">
+	    <button ion-button icon-only (click)="presentPopover($event)">
+		  <ion-icon name="more"></ion-icon>
+		</button>
+	</ion-buttons>
+    <!-- <ion-buttons end>
+        <button (click)="addGroup()" ion-button icon-only >
+            그룹추가
+        </button>
+    </ion-buttons> -->
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item-group *ngFor="let group of groups; let i = index">
+		    <ion-item-divider color="light" >
+		    	<table style="width:100%;height: 50px;">
+		    		<tr>
+		    			<td style="text-align:left;width: 80%;" (click)="toggleAccordion(i)">
+                            <div  style="width: 100%;text-align: left;">{{group.HSPT_GROUP_NM}}</div>
+                        </td>
+		    			<td>
+		    				<div style="color: #a1a1a1;" [hidden]="!AdminAuth" class="accord-button" (click)="addMember(group.HSPT_GROUP_NO,group.HSPT_GROUP_NM)" >
+                                <i class="fa fa-user-plus fa-lg"></i>
+                            </div>
+						    <div style="color: #a1a1a1;" [hidden]="!group.caretUp" class="accord-button" (click)="toggleAccordion(i)" >
+                                <i class="fa fa-caret-up fa-lg" ></i>
+                            </div>
+						    <div style="color: #a1a1a1;" [hidden]="!group.caretDown" class="accord-button" (click)="toggleAccordion(i)">
+                                <i class="fa fa-caret-down fa-lg"></i>
+                            </div>			
+		    			</td>
+		    		</tr>
+		    	</table>
+			</ion-item-divider>
+		    <ion-item  *ngFor="let subgroup of group.HSPT_GROUPS" [hidden]="!group.accordionExpanded">
+			    <ion-avatar item-start>
+			    	<img *ngIf="subgroup.HSPT_MEMBER_IMG != undefined" [src]="subgroup.HSPT_MEMBER_IMG">
+			    </ion-avatar>
+    			<h2>
+    				{{subgroup.HSPT_NM}}
+                    <div style="display: inline-block;width: 25px;height: 25px;background-color: #eaa966;text-align: center;border-radius: 20%;vertical-align: middle;">
+                        <a [href]="sanitize('sms:' + subgroup.HSPT_HDP_NO01)" class="button" >
+                            <i style="color:#fff;padding-bottom: 10px" class="fa fa-comment"></i>
+                        </a>
+                    </div>
+                    <div style="display: inline-block;width: 25px;height: 25px;background-color: #5bd202;text-align: center;border-radius: 20%;vertical-align: middle;padding-top: 4px;" (click)="phoneCall(subgroup.HSPT_HDP_NO01)">
+                        <i style="color:#fff;;" class="fa fa-phone"></i>
+                    </div>
+    				<button ion-button color="ihbutton" style="margin:0px;" (click)="updateGroupMember(subgroup.HSPT_GROUP_MEMBER_NO,group.HSPT_GROUP_NO,group.HSPT_GROUP_NM,subgroup.HSPT_NM,subgroup.HSPT_SPOT,subgroup.HSPT_HDP_NO01,subgroup.HSPT_EMAIL,subgroup.HSPT_MEMBER_IMG)" [hidden]="!AdminAuth">수정</button>
+    				<button ion-button color="ihbutton"  style="margin:0px 4px;"(click)="delGroupMember(subgroup.HSPT_GROUP_MEMBER_NO)" [hidden]="!AdminAuth">삭제</button>
+    			</h2>
+			    <p>소속 : {{subgroup.HSPT_SPOT}}</p>
+			    <p>전화 : {{subgroup.HSPT_HDP_NO01}}</p>
+			    <p>이메일 : {{subgroup.HSPT_EMAIL}}</p>   		   
+	  		</ion-item>
+		</ion-item-group>
+	</ion-list>
+</ion-content>
+
+
+<div class="dim-layer" [hidden]="!groupAddPopup">
+    <div class="dimBg"></div>
+    <div id="layer1" class="pop-layer">
+        <div class="pop-container">
+            <div class="pop-conts">
+                <!--content //-->
+            	<h3 style="text-align: center;">추가할 그룹 이름</h3>
+            	<table style="width:100%;padding">
+            		<tr>
+            			<td colspan="2" style="height: 40px;padding: 0px 8px 0px 8px;">
+            				<input style="width:100%;height: 30px;" type="text" [(ngModel)]="groupModel.groupName" name="groupName"/>
+            			</td>
+            		</tr>
+            		<tr>
+            			<td style="height: 50px;width: 50%;text-align: right;">
+							<button ion-button color="ihbutton" (click)="addGroups()">추가</button>	
+						</td>
+						<td style="width: 50%">
+							<button ion-button color="ihbutton" (click)="popupClose()">취소</button>
+						</td>
+            		</tr>
+            	</table>
+                <!--// content-->
+            </div>
+        </div>
+    </div>
+</div>

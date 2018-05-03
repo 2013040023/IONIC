@@ -1,0 +1,20 @@
+page-register {
+	p{padding-left: 5px;}
+	ion-grid{padding: 0px !important;}
+	ion-content .login-check{padding-left: 0px;}
+	ion-content .login-check ion-checkbox{margin: 9px 9px 9px 0px !important;}
+	ion-content .login-check .item-inner{border-bottom: 0px !important;font-size:12px; }
+	ion-content ion-grid input{border: 0px;
+    display: block;
+    text-indent: 10px;
+    background: #fff;
+    width: 100%;
+    font-size: inherit;
+    color: inherit;
+    line-height: 45px;
+    height: 50px;
+    box-sizing: border-box;}
+	ion-content ion-grid ion-col{text-align: center;}
+    ion-content ion-grid ion-col button{height:100% !important;margin:0px !important;}
+    .checkbox-icon{background-color: #3964a6 !important;border-color:#ffffff !important;}
+}

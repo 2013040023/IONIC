@@ -1,0 +1,17 @@
+page-add-notice {
+  ion-content{background-color: #ffffff !important;}
+.block {position: relative }
+.block .deleteIcon {
+    position: absolute !important;
+    color: #ffffff !important;
+    margin-left: 80% !important;
+  }
+ .block  .deleteIcon:before {
+    font-size: 30px !important;
+  }
+  ion-content input{border:0px !important;}
+  ion-content ion-textarea{margin:0px !important;height:250px;}
+  ion-content ion-textarea textarea{margin:0px !important;height:250px;}
+  ion-content ion-textarea .text-input-md{margin:0px !important;}
+}
+

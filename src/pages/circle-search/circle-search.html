@@ -1,0 +1,70 @@
+<!--
+  Generated template for the CircleSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  	<ion-navbar color="ihHeader">
+	    <ion-title>원우검색</ion-title>
+	    <ion-buttons end>
+	            <button (click)="clickSearch()" ion-button icon-only >
+                	<i class="fa fa-search fa-lg"></i>
+	            </button>
+	    </ion-buttons>
+  	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <table class="search-table" [hidden]="!showSearch">
+        <tr>
+            <td>
+                <input type="text" placeholder="이름" [(ngModel)]="searchUser.userName" name="userName"/>
+            </td>
+            <td rowspan="2">
+                <button ion-button  color="ihbutton" style="margin-top:0px;" (click)="clickSearchUser()">검색</button>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="업종" [(ngModel)]="searchUser.ceoCtg" name="ceoCtg"/></td>
+        </tr>
+    </table>
+
+<!--     <ion-list [virtualScroll]="items" approxItemHeight="100px">
+        <ion-item *virtualItem="let item" (click)="detailBoard(item.board_id,item.regi_id)">
+            <img  *ngIf="item.board_img != null" [src]=item.board_img_set[0]  />
+            <div style="padding:8px 0px 8px 0px;">  
+                <h2>{{item.board_title}}</h2>
+            </div>
+            <div style="padding-top:8px;color: #eeeeee;font-size: 1.2rem;">
+                <p>{{item.user_name}} : {{item.regi_date}}</p>
+            </div>
+        </ion-item>
+    </ion-list> -->
+    <div [virtualScroll]="users" approxItemHeight="100px" style="width:100%;">
+    <ion-item-group *virtualItem="let user" (click)="userSelected(user.CEO_NO,user.CEO_ORDER)" style="width:100%;">
+            <ion-item style="width:100%;position: relative;" >
+                <ion-avatar item-start>
+                    <img *ngIf="user.CEO_IMG != undefined" [src]="user.CEO_IMG">
+                </ion-avatar>
+                <h2>{{user.CEO_NM}}</h2>
+                <p>기수 : {{user.CEO_ORDER}}</p>
+                <p>회사/기관 : {{user.CEO_CPN}}</p>
+                <p>전화 : {{user.phone_num_fix}}</p>
+                <div style="position: absolute;top:10px;right:10px;">
+                    <div style="display: inline-block;width: 35px;height: 35px;background-color: #eaa966;text-align: center;border-radius: 20%;vertical-align: top;">
+                        <a [href]="sanitize('sms:' + user.CEO_HDP_NO01)" class="button" >
+                            <i style="color:#fff;" class="fa fa-comment"></i>
+                        </a>
+                    </div>
+                    <div style="display: inline-block;width: 35px;height: 35px;background-color: #5bd202;text-align: center;border-radius: 20%;padding-top: 8px;" (click)="phoneCall(user.CEO_HDP_NO01)">
+                        <i style="color:#fff;" class="fa fa-phone"></i>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-item-group>
+    </div>
+</ion-content>

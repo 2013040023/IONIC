@@ -1,0 +1,62 @@
+<ion-content padding>
+	<form (ngSubmit)="login()">
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<div style="color:#ffffff;font-weight: 600;font-size: 2rem;margin-top: 50px;">건강,문화 최고경영자 과정</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<div style="color:#ffffff;font-weight: 600;font-size:3.5rem;letter-spacing: 20px;margin-bottom: 30px;padding-left: 20px;">원우수첩</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<input type="text" placeholder="아이디" [(ngModel)]="todo.userId" name="userId"/>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<input type="password" placeholder="비밀번호" [(ngModel)]="todo.userpassword" name="userpassword"/>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-item class="login-check" style="background-color: #3964a6;">
+					  <ion-label style="color:#ffffff;">로그인상태 유지</ion-label>
+					  <ion-checkbox color="dark" [(ngModel)]="autologin" name="autologin" checked="false"></ion-checkbox>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+					<button ion-button full type="submit" style="height: 50px;">로그인</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</form>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<a (click)="findID()">아이디찾기</a>
+			</ion-col>
+			<ion-col>
+				<a (click)="findPassword()">비밀번호찾기</a>
+			</ion-col>
+			<ion-col>
+				<a (click)="registUser()">회원가입</a>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <p style="margin-top:5px;margin-bottom: 0px;">Copyright© INHA UNIVERCITY HOSPITAL.</p>
+        <p style="margin-bottom:5px;margin-top: 5px;">ALL RIGHTS RESERVED</p>
+    </ion-toolbar>
+</ion-footer>
+

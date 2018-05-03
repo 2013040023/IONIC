@@ -1,0 +1,17 @@
+page-gisu-select {
+	ion-content{background-color: #ffffff !important;}
+  	  	ion-avatar{width: 80px !important; height: 80px !important;position:relative;overflow: hidden;border-radius: 50%;}
+  	ion-avatar img{ 
+  		position: absolute;
+		left: 50%;
+		top: 50%;
+		width:100% !important;
+		height: auto !important;
+		-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	       transform: translate(-50%,-50%);
+  	}
+
+  	ion-item-group {border-bottom:1px solid #e3e3e3;width: 100% !important;}
+  	ion-item-group ion-item{width:100% !important;}
+}

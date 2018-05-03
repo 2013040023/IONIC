@@ -1,0 +1,27 @@
+page-gisu-view {
+	ion-content{background-color: #ffffff !important;}
+  	ion-avatar{width: 80px !important; height: 80px !important;position:relative;overflow: hidden;border-radius: 50%;}
+  	ion-avatar img{ 
+  		position: absolute;
+		left: 50%;
+		top: 50%;
+		width:100% !important;
+		height: auto !important;
+		-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	       transform: translate(-50%,-50%);
+  	}
+  	ion-avatar img.portrait {
+	  width: 100%;
+	  height: auto;
+	}
+
+  	table{width: 100%;}
+	table td{padding: 8px;border:1px solid #e3e3e3;}
+	table td:nth-child(1){text-align:right;width: 25%;}
+	table td input{width:100%;border:0px;}
+
+	ion-content ion-textarea{margin:0px !important;height:50px;}
+	ion-content ion-textarea textarea{margin:0px !important;height:50px;}
+	ion-content ion-textarea .text-input-md{margin:0px !important;}
+}

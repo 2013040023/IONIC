@@ -1,0 +1,23 @@
+page-home {
+	ion-content .login-check{padding-left: 0px;}
+	ion-content .login-check ion-checkbox{margin: 9px 9px 9px 0px !important;}
+	ion-content .login-check .item-inner{border-bottom: 0px !important;font-size:12px; }
+	ion-content ion-grid input{
+    border: 0px;
+    display: block;
+    text-indent: 10px;
+    margin-top: 12px;
+    background: #fff;
+    width: 100%;
+    font-size: inherit;
+    color: inherit;
+    line-height: 45px;
+    height: 50px;
+    box-sizing: border-box;}
+	ion-content ion-grid ion-col{text-align: center;}
+    ion-content ion-grid ion-row ion-col a{color:#ffffff;}
+    .checkbox-icon{background-color: #3964a6 !important;border-color:#ffffff !important;}
+    ion-footer{text-align: center;}
+}
+
+

@@ -1,0 +1,69 @@
+<!--
+  Generated template for the AddNoticePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  	<ion-navbar color="ihHeader">
+    	<ion-title>작성하기</ion-title>
+    	<ion-buttons end>
+			<button (click)="myFunction()" ion-button icon-only>
+				게시하기
+			</button>
+	    </ion-buttons>
+  	</ion-navbar>
+	  	
+</ion-header>
+
+<ion-content>
+
+    <form>
+    <ion-grid style="padding: 0px;">
+        <ion-row>
+            <ion-col col-12 style="padding: 0px;">
+                <ion-item style="padding:0px;">
+                    <input type="text" style="width:100%;padding:0px 8px 0px 8px;" placeholder="제목" [(ngModel)]="todo.boardTitle" name="boardTitle"/>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12 style="padding: 0px;">
+                <ion-item style="padding: 0px;">
+                    <ion-textarea placeholder="내용" style="padding:8px 0px 0px 8px;" [(ngModel)]="todo.boardContent" name="boardContent" ></ion-textarea>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>  
+        	<ion-col col-6 *ngFor=" let imageURI of imageURI; let id = index ">
+                <ion-card class="block">
+                    <ion-icon class="deleteIcon" (click)="deletePhoto(id)">
+                        <img style="width:30px;height:30px;" src="assets/imgs/delbtn.png"/>
+                    </ion-icon>
+                    <img [src]="imageURI" *ngIf="imageURI" />
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row style="padding-left:8px;" *ngIf="fileName">
+            <ion-col col-2>
+                <i class="fa fa-paperclip"></i>
+            </ion-col>
+            <ion-col col-8>
+                {{fileName}}
+            </ion-col>
+            <ion-col col-2 (click)="deleteFile()">
+                <i class="fa fa-times" style="color:#000"></i>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    </form>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <button ion-button color="light" (click)="takePhoto()" ><i class="fa fa-camera"></i></button>
+        <button ion-button color="light" (click)="getImage()"><i class="fa fa-image"></i></button>
+        <button ion-button color="light" (click)="upFile()" *ngIf="PFandroid"><i class="fa fa-paperclip"></i></button>
+    </ion-toolbar>
+</ion-footer>

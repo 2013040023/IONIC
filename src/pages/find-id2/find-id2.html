@@ -1,0 +1,22 @@
+<!--
+  Generated template for the FindId2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="ihHeader">
+    <ion-title>아이디 찾기</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<h4 style="color:#ffffff;">회원님의 아이디는 {{userId}} 입니다.</h4>
+	<div class="tag-area">
+		<a (click)="findPassword()">비밀번호 찾기</a>
+	</div>
+	<button ion-button full type="button" style="height: 50px;margin-top: 10px;" (click)="confirm()">확인</button>
+</ion-content>

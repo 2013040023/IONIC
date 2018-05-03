@@ -1,0 +1,125 @@
+<!--
+  Generated template for the Circle1Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  	<ion-navbar color="ihHeader">
+    	<ion-title>총원우회</ion-title>
+  	    <ion-buttons end [hidden]="!AdminAuth">
+    	    <button ion-button icon-only (click)="presentPopover($event)">
+    		  <ion-icon name="more"></ion-icon>
+    		</button>
+	   </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item-group *ngFor="let group of groups; let i = index">
+		    <ion-item-divider color="light" >
+		    	<table style="width:100%;height: 50px;">
+		    		<tr>
+		    			<td style="text-align:left;width: 80%;" (click)="toggleAccordion(i)">
+                            <div style="width: 100%;text-align: left;">{{group.CEO_AUTH_NM}}</div>
+                        </td>
+		    			<td>
+		    				<div class="accord-button" style="color:#a1a1a1;" (click)="addMember(group.CEO_AUTH_NO)" [hidden]="!AdminAuth">
+                                <i class="fa fa-user-plus fa-lg"></i>
+                            </div>
+                            <div style="color: #a1a1a1;" [hidden]="!group.caretUp" class="accord-button" (click)="toggleAccordion(i)" >
+                                <i class="fa fa-caret-up fa-lg" ></i>
+                            </div>
+                            <div style="color: #a1a1a1;" [hidden]="!group.caretDown" class="accord-button" (click)="toggleAccordion(i)">
+                                <i class="fa fa-caret-down fa-lg"></i>
+                            </div>	
+		    			</td>
+		    		</tr>
+		    	</table>
+			</ion-item-divider>
+		    <ion-item  *ngFor="let subgroup of group.AUTH_GROUPS" [hidden]="!group.accordionExpanded">
+			    <ion-avatar item-start>
+			    	<img [src]="subgroup.CEO_IMG" >
+			    </ion-avatar>
+    			<h2>
+    				{{subgroup.CEO_NM}}
+                    <div style="display: inline-block;width: 25px;height: 25px;background-color: #eaa966;text-align: center;border-radius: 20%;vertical-align: middle;">
+                        <a [href]="sanitize('sms:' + subgroup.CEO_HDP_NO01)" class="button" >
+                            <i style="color:#fff;padding-bottom: 10px" class="fa fa-comment"></i>
+                        </a>
+                    </div>
+                    <div style="display: inline-block;width: 25px;height: 25px;background-color: #5bd202;text-align: center;border-radius: 20%;vertical-align: middle;padding-top: 4px;" (click)="phoneCall(subgroup.CEO_HDP_NO01)">
+                        <i style="color:#fff;;" class="fa fa-phone"></i>
+                    </div>
+    				<button ion-button color="ihbutton" style="margin:0px;" (click)="delGroupMember(subgroup.CEO_NO)" [hidden]="!AdminAuth">삭제</button>
+    			</h2>
+			    <p>기수 : {{subgroup.CEO_ORDER}}</p>
+			    <p>회사/기관 : {{subgroup.CEO_CPN}}</p>
+			    <p>전화 : {{subgroup.CEO_HDP_NO01}}</p>
+	  		</ion-item>
+		</ion-item-group>
+	</ion-list>
+</ion-content>
+
+<div class="dim-layer" [hidden]="!groupAddPopup">
+    <div class="dimBg"></div>
+    <div id="layer1" class="pop-layer">
+        <div class="pop-container">
+            <div class="pop-conts">
+                <!--content //-->
+            	<h3 style="text-align: center;">추가할 그룹 이름</h3>
+            	<table style="width:100%;padding">
+            		<tr>
+            			<td colspan="2" style="height: 40px;padding: 0px 8px 0px 8px;">
+            				<input style="width:100%;height: 30px;" type="text" [(ngModel)]="groupModel.groupName" name="groupName"/>
+            			</td>
+            		</tr>
+            		<tr>
+            			<td style="height: 50px;width: 50%;text-align: right;">
+							<button ion-button color="ihbutton" (click)="addGroups()">추가</button>	
+						</td>
+						<td style="width: 50%">
+							<button ion-button color="ihbutton" (click)="popupClose()">취소</button>
+						</td>
+            		</tr>
+            	</table>
+                <!--// content-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dim-layer" [hidden]="!memberAddPopup">
+    <div class="dimBg"></div>
+    <div id="layer2" class="pop-layer">
+        <div class="pop-container">
+            <div class="pop-conts">
+                <div>
+                    <table style="width:100%;" class="search-table-popup">
+                        <tr>
+                            <td>
+                                <input type="text" style="width:100%;border:0px;padding-left: 8px;" [(ngModel)]="searchUser.userName" name="userName"/>
+                            </td>
+                            <td>
+                                <button ion-button color="ihbutton" full (click)="userSearch()" style="margin:0px;height: 46px;">
+                                <i class="fa fa-search"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <ion-list style="overflow-y: scroll;height: 200px;margin:0px;border:1px solid #e3e3e3;">
+                  <button ion-item *ngFor="let user of users" (click)="userSelected(user.CEO_NO)">
+                    {{ user.CEO_ORDER }} {{ user.CEO_NM }}
+                  </button>
+                </ion-list>
+                <div style="height: 50px;text-align: center;padding-top: 5px;">
+                    <button ion-button color="ihbutton" (click)="popupClose()">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

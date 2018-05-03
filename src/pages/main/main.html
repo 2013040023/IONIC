@@ -1,0 +1,97 @@
+<!--
+  Generated template for the MainPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4>
+                <ion-card (click)="category()" class="category1">
+                    <div style="margin-top:19px;">
+                        <i style="margin-bottom: 5px;" class="fa fa-users fa-3x"></i>
+                    </div>
+                    <span>총원우회</span>
+                </ion-card>
+                <ion-card (click)="category3()" class="category2">
+                    <div style="margin-top:19px;">
+                        <i style="margin-bottom: 5px !important;" class="fa fa-university fa-3x"></i>
+                    </div>
+                    <span>기수별</span>
+                </ion-card>
+                <ion-card (click)="category4()" class="category3" >
+                    <div style="margin-top:19px;">
+                        <i class="fa fa-search fa-3x"></i>
+                    </div>
+                    <span>원우검색</span>
+                </ion-card>
+            </ion-col>
+
+            <ion-col col-8 style="padding-left: 0px !important;padding-right: 5px !important">
+                <div (click)="category1()">
+                    <div class="thumbnail">
+                        <img [src]="user.ceoImg" >
+                    </div>
+                    <table>
+                        <tr>
+                            <td style="font-size: 1.7rem;font-weight: 600;">{{user.ceoOrderNm}} {{user.userName}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{user.ceoCpn}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{user.phoneNum}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{user.ceoCtg}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row class="second-row">
+            <ion-col col-4>
+                <ion-card (click)="category5()" class="category4" >
+                    <div style="margin-top:19px;">
+                        <i class="fa fa-hospital-o fa-3x"></i>
+                    </div>
+                    <span>병원정보</span>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4 style="padding-right: 5px !important;padding-left: 0px !important;">
+                <ion-card (click)="category2()" class="category4">
+                    <div style="margin-top:19px;">
+                        <i class="fa fa-clipboard fa-3x"></i>
+                    </div>
+                    <span>공지사항</span>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4 style="padding-right: 5px !important;padding-left: 0px !important;">
+                <ion-card (click)="category6()" class="category5" >
+                    <div style="margin-top:19px;">
+                        <i class="fa fa-list-alt fa-3x"></i>
+                    </div>
+                    <span>원우소식</span>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div style="margin:0px 5px 5px 5px;padding: 5px;background-color:rgba(255, 255, 255, 0.2);border-radius: 2px;" id="notice">
+        <div style="padding:5px;color:#ffffff;" (click)="category2()" id="notice-header">
+            <ion-chip style="background-color: #466da9">
+                <ion-label style="color: #ffffff !important;">New</ion-label>  
+            </ion-chip>
+            공지사항
+            <div style="display: inline-block;float: right;padding-top: 10px;">
+                <i class="fa fa-chevron-circle-right fa-lg"></i>
+            </div>
+            
+        </div>
+        <div *ngFor=" let newNotice of newNotices; let id = index"  >
+            <div style="padding:5px 15px 5px 15px;color:#ffffff;">
+                {{id+1}}. {{newNotice}}
+        </div>
+    </div>
+    </div>
+</ion-content>

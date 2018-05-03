@@ -1,0 +1,17 @@
+page-register-popup {
+    ion-content{
+        background-color: rgba( 0, 0, 0, 0.5 ) !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+    .toolbar-title{        
+        font-size: 1.4rem;
+    }
+    #popup{
+        padding :10px 15px;
+    }
+}
